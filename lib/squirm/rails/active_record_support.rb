@@ -22,9 +22,9 @@ module Squirm
           end
 
           def #{name}(options = {})
-            proc_args = @@__squirm[:#{name}].arguments
-            args = proc_args.inject({}) {|m, o| m[o] ||= try(o); m}
-            self.class.#{name}(args.merge(options))
+            self.class.#{name}(@@__squirm[:#{name}].arguments.inject({}) do |hash, key|
+              hash[key] ||= send(key) if respond_to?(key); hash
+            end.merge(options))
           end
         EOM
       end
