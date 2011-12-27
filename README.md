@@ -3,6 +3,9 @@
 Squirm::Rails lets you comfortably use Postgres stored procedures with Rails /
 Active Record.
 
+It's built upon [Squirm](https://github.com/bvision/squirm), a lightweight,
+Postgres-specific library for stored procedures.
+
 ## Quick start
 
     rails new my_app
